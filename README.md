@@ -49,6 +49,8 @@ Netlify settings:
 - Publish directory: `dist`
 - Node version: `20`
 
+Copy variables from `netlify.env.example` into Netlify environment variables. Keep `VITE_API_BASE` blank if you are using the `/api` redirect in `netlify.toml`; otherwise set it to your backend URL.
+
 The frontend can be deployed directly from GitHub. If the backend URL is not `https://surya-poc-backend.onrender.com`, update `netlify.toml` or set `VITE_API_BASE` in Netlify.
 
 ## Deploy Backend
@@ -61,6 +63,8 @@ Required Render environment variables:
 - `GROQ_BACKUP_API_KEY`
 - `TELEGRAM_BOT_TOKEN`
 - `TELEGRAM_POLLING=true`
+
+Copy variables from `backend.env.example` into the backend host environment.
 
 Render start command:
 
