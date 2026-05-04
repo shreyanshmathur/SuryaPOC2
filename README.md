@@ -49,9 +49,9 @@ Netlify settings:
 - Publish directory: `dist`
 - Node version: `20`
 
-Copy variables from `netlify.env.example` into Netlify environment variables. Keep `VITE_API_BASE` blank if you are using the `/api` redirect in `netlify.toml`; otherwise set it to your backend URL.
+Copy variables from `netlify.env.example` into Netlify environment variables. Keep `VITE_API_BASE` blank to use the bundled Netlify Function API.
 
-The frontend can be deployed directly from GitHub. If the backend URL is not `https://surya-poc-backend.onrender.com`, update `netlify.toml` or set `VITE_API_BASE` in Netlify.
+The frontend can be deployed directly from GitHub. The bundled Netlify Function supports demo API actions. For live Telegram polling, deploy the backend separately because Netlify Functions do not run continuously.
 
 ## Deploy Backend
 

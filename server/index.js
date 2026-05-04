@@ -761,7 +761,11 @@ app.get("/api/actions", (_req, res) => {
   res.json(backendActions);
 });
 
-app.listen(port, "127.0.0.1", () => {
-  console.log(`Surya PoC backend listening on http://127.0.0.1:${port}`);
-  if (telegramToken && pollingEnabled) pollTelegram();
-});
+export default app;
+
+if (!process.env.NETLIFY && !process.env.AWS_LAMBDA_FUNCTION_NAME) {
+  app.listen(port, "127.0.0.1", () => {
+    console.log(`Surya PoC backend listening on http://127.0.0.1:${port}`);
+    if (telegramToken && pollingEnabled) pollTelegram();
+  });
+}
