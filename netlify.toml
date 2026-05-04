@@ -1,24 +1,23 @@
 [build]
-  command   = "npm run build"
-  publish   = "dist"
+  command = "npm run build"
+  publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
 
-# In the Netlify UI, set VITE_API_BASE to your backend URL, e.g.:
-#   VITE_API_BASE = https://surya-poc-backend.onrender.com
-# Leave it blank if you are using the /api redirect rule below.
+# Frontend-only Netlify deployment.
+# The Express backend should be hosted separately on Render/Railway/Fly.
+# Option A: set VITE_API_BASE in Netlify to the backend URL.
+# Option B: keep VITE_API_BASE blank and update the /api redirect below.
 
-# ── API proxy → backend (Render / Railway / any host) ──────────────────────
-# Replace the `to` URL with your deployed backend URL after deploying the backend.
 [[redirects]]
-  from   = "/api/*"
-  to     = "https://surya-poc-backend.onrender.com/api/:splat"
+  from = "/api/*"
+  to = "https://surya-poc-backend.onrender.com/api/:splat"
   status = 200
-  force  = true
+  force = true
 
-# ── SPA catch-all (must be last) ────────────────────────────────────────────
+# SPA catch-all. Keep this last.
 [[redirects]]
-  from   = "/*"
-  to     = "/index.html"
+  from = "/*"
+  to = "/index.html"
   status = 200
